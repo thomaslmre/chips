@@ -27,6 +27,8 @@ app.get('/donnees', (req, res) => {
     }
     res.json(results);
   });
+  
+  connection.end();
 });
 
 // Démarrer le serveur
