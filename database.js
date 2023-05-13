@@ -15,7 +15,9 @@ const connection = mysql.createConnection({
 
 // Route GET pour récupérer des données depuis la base de données
 app.get('/donnees', (req, res) => {
-  const sql = 'SELECT * FROM Femme';
+  const sql = `SELECT Femme.nom_femme, Femme.prenom_femme, Femme.annee_naissance_femme, atout1.rang_atout as tete_femme, atout2.rang_atout as back_femme FROM Femme 
+               LEFT JOIN Atout atout1 ON Femme.tete_femme = atout1.id_atout
+               LEFT JOIN Atout atout2 ON Femme.back_femme = atout2.id_atout`;
   connection.query(sql, (err, results) => {
     if (err) {
       console.error('Erreur lors de l\'exécution de la requête :', err);
