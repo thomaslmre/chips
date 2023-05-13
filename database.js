@@ -33,3 +33,14 @@ app.get('/donnees', (req, res) => {
 app.listen(3000, () => {
   console.log('Serveur démarré sur le port 3000.');
 });
+
+fetch('http://localhost:3000/donnees')
+  .then(response => response.json())
+  .then(data => {
+    // Traiter les données récupérées
+    console.log(data);
+  })
+  .catch(error => {
+    // Gérer les erreurs
+    console.error('Erreur lors de la récupération des données :', error);
+});
