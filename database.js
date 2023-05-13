@@ -5,17 +5,17 @@ const mysql = require('mysql2');
 const app = express();
 app.use(cors());
 
-// Créer une connexion à la base de données
-const connection = mysql.createConnection({
+const ParamsDB = {
   host: "89.116.147.103",
   user: "u104222462_ONW_thomas",
   password: "L&@r7IUFX0p",
   database: "u104222462_oneway",
   port: 3306
-});
+}
 
-// Route GET pour récupérer des données depuis la base de données
 app.get('/donnees', (req, res) => {
+  const connection = mysql.createConnection(ParamsDB);
+
   const sql = `SELECT femme.nom_femme, femme.prenom_femme, femme.annee_naissance_femme, atout1.rang_atout as tete_femme, atout2.rang_atout as back_femme FROM femme 
                LEFT JOIN atout atout1 ON femme.tete_femme = atout1.id_atout
                LEFT JOIN atout atout2 ON femme.back_femme = atout2.id_atout`;
