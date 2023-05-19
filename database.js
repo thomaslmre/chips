@@ -13,7 +13,7 @@ const ParamsDB = {
   port: 3306
 }
 
-app.get('/donnees', (req, res) => {
+app.post('/donnees', (req, res) => {
   const connection = mysql.createConnection(ParamsDB);
 
   const sql = `SELECT femme.nom_femme, femme.prenom_femme, femme.annee_naissance_femme, atout1.rang_atout as tete_femme, atout2.rang_atout as back_femme FROM femme 
