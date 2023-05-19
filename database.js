@@ -2,12 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
 
-const corsOptions = {
-  origin: 'https://mychips.app'
-};
-
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors());
 
 const ParamsDB = {
   host: "89.116.147.103",
